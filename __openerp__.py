@@ -37,7 +37,12 @@
     'author': 'EBII MonsieurB',
     'contributors': 'Alexis de lattre',  # text
     'website': 'https://www.ebii.fr',
-
+    'data': [
+             'api_helper_view_rucher.xml',
+             'api_helper_view_ressource.xml',
+             'api_helper_view_terrain.xml',
+             'api_helper_view_traitement.xml',
+             'api_helper_view.xml'],
     #les screenshots en v8: mettre dans static/description/, sans déclaration
     # dans ce fichier
     # pour l'icone du module (PNG 64x64 ou 128x128): rien à mettre dans __openerp__.py

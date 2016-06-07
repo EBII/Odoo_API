@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- vue form -->
+    <record id="view_form_api_rucher" model="ir.ui.view">
+        <field name="name">apihelper.apirucher</field>
+        <field name="model">apihelper.apirucher</field>
+        <field name="arch" type="xml">
+            <form string="Rucher ">
+                <sheet>
+                    <group>
+                        <field name="terrain"/>
+                        <field name="nombre"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- vue tree -->
+    <record id="view_tree_api_rucher" model="ir.ui.view">
+        <field name="name">apihelper.apirucher</field>
+        <field name="model">apihelper.apirucher</field>
+        <field name="arch" type="xml">
+            <tree string="Les Ruchers ">
+                <field name="terrain"/>
+                <field name="nombre"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="load_api_helper_rucher" model="ir.actions.act_window">
+        <field name="name">Api Viewer</field>
+        <field name="res_model">apihelper.apirucher</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+</odoo>

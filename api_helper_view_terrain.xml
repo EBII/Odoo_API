@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+   <!-- vue form -->
+    <record id="view_form_api_terrain" model="ir.ui.view">
+        <field name="name">apihelper.apiterrain</field>
+        <field name="model">apihelper.apiterrain</field>
+        <field name="arch" type="xml">
+            <form string="Saisir un Terrain">
+                <sheet>
+                    <group>
+                        <field name="emplacement"/>
+                        <field name="ressource"/>
+                        <field name="proprietaire"/>
+                        <field name="apiculteur"/>
+                        <field name="traitement"/>
+                        <field name="actif"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- vue tree -->
+    <record id="view_tree_api_terrain" model="ir.ui.view">
+        <field name="name">apihelper.apiterrain</field>
+        <field name="model">apihelper.apiterrain</field>
+        <field name="arch" type="xml">
+            <tree string="Les Terrains">
+                <field name="emplacement"/>
+
+                        <field name="proprietaire"/>
+                        <field name="apiculteur"/>
+                        <field name="traitement"/>
+                        <field name="actif"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="load_api_helper_terrain" model="ir.actions.act_window">
+        <field name="name">Api Viewer</field>
+        <field name="res_model">apihelper.apiterrain</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+</odoo>
