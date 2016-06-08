@@ -28,10 +28,10 @@
         <field name="arch" type="xml">
             <tree string="floraisons">
                 <field name="denomination"/>
+                         <field name="floraison"/>
                         <field name="periode_start"/>
                         <field name="periode_stop"/>
                         <field name="annee"/>
-                        <field name="position"/>
             </tree>
         </field>
     </record>

@@ -2,7 +2,7 @@
 
 <odoo>
 
-   <!-- vue form -->
+    <!-- vue form -->
     <record id="view_form_api_terrain" model="ir.ui.view">
         <field name="name">apihelper.apiterrain</field>
         <field name="model">apihelper.apiterrain</field>
@@ -14,7 +14,6 @@
                         <field name="ressource"/>
                         <field name="proprietaire"/>
                         <field name="apiculteur"/>
-                        <field name="traitement"/>
                         <field name="actif"/>
 
                     </group>
@@ -29,11 +28,9 @@
         <field name="arch" type="xml">
             <tree string="Les Terrains">
                 <field name="emplacement"/>
-
-                        <field name="proprietaire"/>
-                        <field name="apiculteur"/>
-                        <field name="traitement"/>
-                        <field name="actif"/>
+                <field name="proprietaire"/>
+                <field name="apiculteur"/>
+                <field name="actif"/>
             </tree>
         </field>
     </record>
