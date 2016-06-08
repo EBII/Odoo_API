@@ -10,6 +10,7 @@
             <form string="Rucher ">
                 <sheet>
                     <group>
+                        <field name="name"/>
                         <field name="terrain"/>
                         <field name="nombre"/>
 
@@ -24,6 +25,7 @@
         <field name="model">apihelper.apirucher</field>
         <field name="arch" type="xml">
             <tree string="Les Ruchers ">
+                <field name="name"/>
                 <field name="terrain"/>
                 <field name="nombre"/>
             </tree>
@@ -31,7 +33,7 @@
     </record>
     <!-- Action -->
     <record id="load_api_helper_rucher" model="ir.actions.act_window">
-        <field name="name">Api Viewer</field>
+        <field name="name">Rucher Viewer</field>
         <field name="res_model">apihelper.apirucher</field>
         <field name="view_mode">tree,form</field>
 

@@ -39,7 +39,7 @@
     </record>
     <!-- Action -->
     <record id="load_api_helper_terrain" model="ir.actions.act_window">
-        <field name="name">Api Viewer</field>
+        <field name="name">Terrain Viewer</field>
         <field name="res_model">apihelper.apiterrain</field>
         <field name="view_mode">tree,form</field>
 
