@@ -38,17 +38,18 @@ class ApiRessource(models.Model):
     #creer la fonction qui agrege le name
 class ApiFloraison(models.Model):
     _name = 'apihelper.apifloraison'
-    #_rec_name = 'display_name'
+    _rec_name = 'display_name'
+
     floraison     = fields.Many2one('apihelper.apiressource','Floraison')
     periode_start = fields.Date('debut floraison')
     periode_stop  = fields.Date('fin floraison')
     annee         = fields.Integer() #ne mettre que l'année
-    #display_name  = fields.Char(compute='_display_name') #champs compute pour affichage du nom
+    display_name  = fields.Char(compute='_display_name') #champs compute pour affichage du nom
 
-    # api.depends('name')
-    # def _display_name(self):
-    #     for rec in self:
-    #         rec.display_name = rec.denomination + str(rec.annee)
+    @api.depends('display_name')
+    def _display_name(self):
+     for rec in self:
+         rec.display_name = rec.floraison + str(rec.annee)
 
 class ApiRucher(models.Model):
     #Rucher installe
