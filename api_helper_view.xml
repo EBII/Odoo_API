@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!--Menu   -->
+    <menuitem name="ApiViewer"
+              id="api_helper_view"
+              action="load_api_helper_rucher"
+    />
+    <!--Menu   -->
+    <menuitem name="Les Ressources"
+              id="api_helper_ressource"
+              parent="api_helper_view"
+              action="load_api_helper_ressource"
+    />
+    <!--Menu   -->
+    <menuitem name="Les Ruchers"
+              id="api_helper_rucher"
+              parent="api_helper_view"
+              action="load_api_helper_rucher"
+    />
+    <!--Menu   -->
+    <menuitem name="Les Traitements"
+              id="api_helper_traitement"
+              parent="api_helper_view"
+              action="load_api_helper_traitement"
+    />
+    <!--Menu   -->
+    <menuitem name="Les Terrains"
+              id="api_helper_terrain"
+              parent="api_helper_view"
+              action="load_api_helper_terrain"
+    />
+    <menuitem name="Les floraisons"
+              id="api_helper_floraison"
+              parent="api_helper_view"
+              action="load_api_helper_floraison"
+    />
+
+
+</odoo>

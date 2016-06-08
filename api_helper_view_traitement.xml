@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- vue form -->
+    <record id="view_form_api_traitement" model="ir.ui.view">
+        <field name="name">apihelper.apitraitement</field>
+        <field name="model">apihelper.apitraitement</field>
+        <field name="arch" type="xml">
+            <form string="Traitement">
+                <sheet>
+                    <group>
+                        <field name="intitule"/>
+                        <field name="rucher"/>
+                        <field name="personne"/>
+                        <field name="date"/>
+                        <field name="type"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- vue tree -->
+    <record id="view_tree_api_traitement" model="ir.ui.view">
+        <field name="name">apihelper.apitraitement</field>
+        <field name="model">apihelper.apitraitement</field>
+        <field name="arch" type="xml">
+            <tree string="rucher">
+                <field name="intitule"/>
+                <field name="date"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="load_api_helper_traitement" model="ir.actions.act_window">
+        <field name="name">Traitement Viewer</field>
+        <field name="res_model">apihelper.apitraitement</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+</odoo>
