@@ -29,6 +29,7 @@ class ApiTraitement(models.Model):
 class ApiRessource(models.Model):
     #type de floraisons possible
     _name = 'apihelper.apiressource'
+    _rec_name = 'denomination'
 
     denomination = fields.Char('fleur')
     floraison    = fields.One2many('apihelper.apifloraison','floraison')

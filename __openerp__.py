@@ -42,6 +42,7 @@
              'api_helper_view_ressource.xml',
              'api_helper_view_terrain.xml',
              'api_helper_view_traitement.xml',
+             'api_helper_view_floraison.xml',
              'api_helper_view.xml'],
     #les screenshots en v8: mettre dans static/description/, sans déclaration
     # dans ce fichier
