@@ -20,9 +20,8 @@
 #
 ##############################################################################
 
-
 {
-    'name': 'Api-helper',
+    'name': 'api_helper',
     'version': '9.0.0.1.0',
     'category': 'help & how-to',
     'license': 'AGPL-3',
@@ -44,6 +43,13 @@
              'api_helper_view_traitement.xml',
              'api_helper_view_floraison.xml',
              'api_helper_view.xml'],
+
+    'demo': ['demo/apihelper.apiressource.csv',
+             'demo/apihelper.apifloraison.csv',
+             'demo/apihelper.apiterrain.csv',
+             'demo/apihelper.apirucher.csv',
+             'demo/apihelper.apitraitement.csv'
+             ],
     #les screenshots en v8: mettre dans static/description/, sans déclaration
     # dans ce fichier
     # pour l'icone du module (PNG 64x64 ou 128x128): rien à mettre dans __openerp__.py
@@ -55,3 +61,4 @@
     'auto_install': False,
     'application': False,
 }
+
