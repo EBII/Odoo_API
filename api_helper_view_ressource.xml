@@ -12,9 +12,7 @@
                 <sheet>
                     <group>
                        <field name="denomination"/>
-                        <field name="periode_start"/>
-                        <field name="periode_stop"/>
-                        <field name="annee"/>
+                        <field name="floraison"/>
                         <field name="position"/>
 
                     </group>

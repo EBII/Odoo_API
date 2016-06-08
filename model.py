@@ -12,7 +12,6 @@ class ApiTerrain(models.Model):
     ressource    = fields.Many2many('apihelper.apiressource') #,'terrain_ressource','apiTerrain','apiRessource','Ressource'
     proprietaire = fields.Many2one('res.partner',u'Propriétaire')
     apiculteur   = fields.Many2one('res.partner','Apiculteur') #plusieurs apiculteur/ terrain
-    traitement   = fields.One2many('apihelper.apitraitement', 'terrain')
     actif        = fields.Boolean('actif')
 
 
@@ -22,7 +21,7 @@ class ApiTraitement(models.Model):
 
     #liste des traitements réaliser sur le rucher par agriculteur ou par l'apiculteur
     intitule = fields.Char('traitement')
-    terrain  = fields.Many2one('apihelper.apiterrain', 'Terrain')
+    rucher  = fields.Many2one('apihelper.apirucher', 'Terrain')
     personne = fields.Many2one  ('res.partner', 'Qui applique')
     date     = fields.Datetime()
     type     = fields.Selection ([('terrain','agricole'),('apiculteur','sanitaire')])
@@ -31,15 +30,24 @@ class ApiRessource(models.Model):
     #type de floraisons possible
     _name = 'apihelper.apiressource'
 
-    denomination  = fields.Char('fleur')
+    denomination = fields.Char('fleur')
+    floraison    = fields.One2many('apihelper.apifloraison','floraison')
+    position     = fields.Integer()  # champ compute fleuri après et avant une autre ressource
+
+    #creer la fonction qui agrege le name
+class ApiFloraison(models.Model):
+    _name = 'apihelper.apifloraison'
+    #_rec_name = 'display_name'
+    floraison     = fields.Many2one('apihelper.apiressource','Floraison')
     periode_start = fields.Date('debut floraison')
     periode_stop  = fields.Date('fin floraison')
     annee         = fields.Integer() #ne mettre que l'année
-    position      = fields.Integer()  # champ compute fleuri après et avant une autre ressource
-#display_name = fields.Char(compute)
+    #display_name  = fields.Char(compute='_display_name') #champs compute pour affichage du nom
 
-    #creer la fonction qui agrege le name
-
+    # api.depends('name')
+    # def _display_name(self):
+    #     for rec in self:
+    #         rec.display_name = rec.denomination + str(rec.annee)
 
 class ApiRucher(models.Model):
     #Rucher installe
@@ -48,3 +56,4 @@ class ApiRucher(models.Model):
     name    = fields.Char ('Nom du rucher')
     terrain =fields.Many2one('apihelper.apiterrain','Emplacement')
     nombre  = fields.Integer('Nombre de Ruche')
+    traitement   = fields.One2many('apihelper.apitraitement', 'rucher')

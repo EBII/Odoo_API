@@ -13,6 +13,7 @@
                         <field name="name"/>
                         <field name="terrain"/>
                         <field name="nombre"/>
+                        <field name="traitement"/>
 
                     </group>
                 </sheet>
