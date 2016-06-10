@@ -26,6 +26,8 @@
         <field name="model">apihelper.apirucher</field>
         <field name="arch" type="xml">
             <tree string="Les Ruchers ">
+                <button name="travail" string="travail" class="oe_highlight"/>
+                <button name="chiotte" string="chiotte" class="oe_highlight"/>
                 <field name="name"/>
                 <field name="terrain"/>
                 <field name="nombre"/>
@@ -39,6 +41,18 @@
         <field name="view_mode">tree,form</field>
 
     </record>
-
+    <record id="" model="ir.actions.act_window">
+        <field name="name"></field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model"></field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+          </p><p>
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
 
 </odoo>

@@ -2,6 +2,16 @@
 
 from openerp import models, api, fields, _
 
+class ApiViwer(models.Model):
+    _name = 'apihelper.apihelper'
+
+    @api.multi
+    @api.returns('self')
+    def autrement(self):
+        self.ensure_one()
+        self.lesRuches = self.read('apihelper.apiterrain')
+        return self
+
 
 class ApiTerrain(models.Model):
     _name = 'apihelper.apiterrain'
@@ -13,6 +23,7 @@ class ApiTerrain(models.Model):
     proprietaire = fields.Many2one('res.partner',u'Propriétaire')
     apiculteur   = fields.Many2one('res.partner','Apiculteur') #plusieurs apiculteur/ terrain
     actif        = fields.Boolean('actif')
+
 
 
 class ApiTraitement(models.Model):
