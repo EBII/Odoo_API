@@ -6,6 +6,7 @@
 #    @author EBII MonsieurB <contact@ebii.fr>
 #	depuis un travail de Alexis de Lattre <alexis.delattre@akretion.com>
 #	(https://github.com/alexis-via/odoo-sample)
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the
@@ -24,3 +25,12 @@
 
 Module de formation à la nouvelle Api Odoo.
 
+Training Module new Api Odoo.
+This module is not functional for the moment
+it serves to discuss the pretique with the new API
+
+git remote add origin https://github.com/EBII/Odoo_API.git
+
+install with demo data 
+
+-i api_helper --without-demo={'api_helper':False}
