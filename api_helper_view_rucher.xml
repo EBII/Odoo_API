@@ -26,7 +26,7 @@
         <field name="model">apihelper.apirucher</field>
         <field name="arch" type="xml">
             <tree string="Les Ruchers ">
-                <button name="new_treatment" string="traiter Varoa" class="oe_highlight"/>
+                <button name="new_treatment" string="traiter Varoa" confirm="Ajouter un traitement anti varoa a ce rucher ? " class="oe_highlight"/>
                 <field name="name"/>
                 <field name="terrain"/>
                 <field name="nombre"/>

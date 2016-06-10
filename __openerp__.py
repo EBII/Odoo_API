@@ -28,10 +28,9 @@
     'summary': 'How good usage for asking value from all fields type',  # v7: size=64, v8: no size limit
     'description': """
         This module is an helper to try all king off request for evry kind of fields
-        with the new API in Odoo 9.0c
-        This module has been written by EBII MonsieurB <contact@ebii.fr>
-        from snippets of
-        Alexis de Lattre from Akretion <alexis.delattre@akretion.com>.
+        with the new API in Odoo 9.0c. This module has been written by EBII MonsieurB <contact@ebii.fr>
+        from snippets of Alexis de Lattre  https://github.com/alexis-via/odoo-sample
+        from Akretion <alexis.delattre@akretion.com>.
     """,
     'author': 'EBII MonsieurB',
     'contributors': 'Alexis de lattre',  # text
@@ -42,13 +41,14 @@
              'api_helper_view_terrain.xml',
              'api_helper_view_traitement.xml',
              'api_helper_view_floraison.xml',
-             'api_helper_view.xml'],
+             'api_helper_view.xml',
+    ],
 
     'demo': ['demo/apihelper.apiressource.csv',
              'demo/apihelper.apifloraison.csv',
              'demo/apihelper.apiterrain.csv',
              'demo/apihelper.apirucher.csv',
-             'demo/apihelper.apitraitement.csv'
+             'demo/apihelper.apitraitement.csv',
              ],
     #les screenshots en v8: mettre dans static/description/, sans déclaration
     # dans ce fichier
