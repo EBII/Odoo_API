@@ -2,10 +2,10 @@
 ##############################################################################
 #
 #    Api-helper module for Odoo
-#    Copyright (C) 2016 Akretion (http://www.akretion.com)
+#    Copyright (C) 2016 EBII  (https://www.ebii.fr)
 #    @author EBII MonsieurB <contact@ebii.fr>
-#	dpuis un travail de Alexis de Lattre <alexis.delattre@akretion.com>
-#
+#	depuis un travail de Alexis de Lattre <alexis.delattre@akretion.com>
+#	(https://github.com/alexis-via/odoo-sample)
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the

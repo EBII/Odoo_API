@@ -5,12 +5,20 @@ from openerp import models, api, fields, _
 class ApiViwer(models.Model):
     _name = 'apihelper.apihelper'
 
-    @api.multi
-    @api.returns('self')
-    def autrement(self):
-        self.ensure_one()
-        self.lesRuches = self.read('apihelper.apiterrain')
-        return self
+    @api.model
+    def default_get(self, fields):
+         res = self.read('apihelper.apirucher')
+         import pdb
+         pdb.set_trace()
+         return res
+
+    # @api.model
+    # @api.returns('self')
+    # def search(self):
+    #     import pdb
+    #     pdb.set_trace()
+    #     self.lesRuches = self.read('apihelper.apirucher')
+    #     return self
 
 
 class ApiTerrain(models.Model):
@@ -70,3 +78,23 @@ class ApiRucher(models.Model):
     terrain =fields.Many2one('apihelper.apiterrain','Emplacement')
     nombre  = fields.Integer('Nombre de Ruche')
     traitement   = fields.One2many('apihelper.apitraitement', 'rucher')
+
+# Methode pour declarer un rucher traiter devrait ajouter Varoa/Id du rucher/User en cours/date encours/'sanitaire'
+    @api.multi
+    def new_treatment(self):
+        self.ensure_one()
+        vals = { 'intitule' : 'Varoa',rucher :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'sanitaire'}
+        id_treatment = super('apihelper.apitraitement',self ).create (vals)
+        import pdb
+        pdb.set_trace()
+        return {'type': 'ir.actions.act_window',
+                'res_model': 'apihelper.apitraitement',
+                'name' : 'Traitementement ajouté',
+                #ressource associé à l id xml de l'action
+                #'res_id':self.env.ref('popit_aggregator.action_view_aggregator').id,
+                'view_mode': 'tree',
+                'target': 'current',
+                'domain': [('apihelper_apitraitement.id','=',self.id)]
+                #'context': {'read': True}
+                }
+
