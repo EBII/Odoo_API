@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, api, fields, _
+from datetime import datetime
 
 class ApiViwer(models.Model):
     _name = 'apihelper.apihelper'
@@ -74,19 +75,17 @@ class ApiRucher(models.Model):
     #Rucher installe
     _name = 'apihelper.apirucher'
 
-    name    = fields.Char ('Nom du rucher')
-    terrain =fields.Many2one('apihelper.apiterrain','Emplacement')
-    nombre  = fields.Integer('Nombre de Ruche')
+    name        = fields.Char ('Nom du rucher')
+    terrain     =fields.Many2one('apihelper.apiterrain','Emplacement')
+    nombre      = fields.Integer('Nombre de Ruche')
     traitement   = fields.One2many('apihelper.apitraitement', 'rucher')
 
-# Methode pour declarer un rucher traiter devrait ajouter Varoa/Id du rucher/User en cours/date encours/'sanitaire'
     @api.multi
     def new_treatment(self):
         self.ensure_one()
-        vals = { 'intitule' : 'Varoa',rucher :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'sanitaire'}
-        id_treatment = super('apihelper.apitraitement',self ).create (vals)
-        import pdb
-        pdb.set_trace()
+        vals = { 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'apiculteur'}
+        
+        id_treatment = super('apihelper.apitraitement',self ).create ({ 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'apiculteur'})
         return {'type': 'ir.actions.act_window',
                 'res_model': 'apihelper.apitraitement',
                 'name' : 'Traitementement ajouté',
