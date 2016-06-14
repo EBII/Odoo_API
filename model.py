@@ -84,32 +84,42 @@ class ApiRucher(models.Model):
     @api.multi
     def duplicate(self):
         self.ensure_one()
-
-        vals = { 'name' : self.name + '(duplicate)','terrain' :self.terrain.id, 'nombre' : self.nombre }
-
-        #from model import ApiTraitement
-
+        #take data from recordset and complete name
+        vals = { 'name' : self.name + ' (duplicate)','terrain' :self.terrain.id, 'nombre' : self.nombre }
+        #create new one with data and retreive Id of
         id_rucher = super(ApiRucher,self).create(vals)
+        return  {   'type': 'ir.actions.act_window',
+                    'res_model': 'apihelper.apirucher',
+                    'name' : 'Rucher '+str(self.name)+u' Dupliqué',
+                    'view_mode': 'tree',
+                    'target': 'current',
+                    'context': {'read': True}
+        }
 
     @api.multi
     def new_treatment(self):
         self.ensure_one()
-        vals = { 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now() }
-        #from model import ApiTraitement
+        vals = { 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'apiculteur' }
+        traitement = self.env['apihelper.apitraitement']
+        id_treatment = traitement.create(vals)
+        #return self.env['apihelper.apitraitement'].search(id_treatment)
+        return  {   'type': 'ir.actions.act_window',
+                    'res_model': 'apihelper.apitraitement',
+                    'name' : u'Traitement anti varoa ajouté au Rucher '+str(self.name),
+                    'view_mode': 'tree',
+                    'view_type': 'apicole',
+                    'target': 'current',
+                    'context': {'read': True}
+        }
 
-        import pdb
-        pdb.set_trace()
-
-        id_treatment = ApiTraitement.new(vals)
-
-        return {'type': 'ir.actions.act_window',
-                'res_model': 'apihelper.apitraitement',
-                'name' : 'Traitementement ajouté',
-                #ressource associé à l id xml de l'action
-                #'res_id':self.env.ref('popit_aggregator.action_view_aggregator').id,
-                'view_mode': 'tree',
-                'target': 'current',
-                'domain': [('apihelper_apitraitement.id','=',self.id)]
-                #'context': {'read': True}
-                }
+        # return {'type': 'ir.ui.view',
+        #         'res_model': 'apihelper.apitraitement',
+        #         'name' : 'Traitementement ajouté',
+        #         #ressource associé à l id xml de l'action
+        #         #'res_id':self.env.ref('popit_aggregator.action_view_aggregator').id,
+        #         'view_mode': 'tree',
+        #         'target': 'current',
+        #         'domain': [('apihelper_apitraitement.id','=',id_treatment)]
+        #         #'context': {'read': True}
+        #         }
 
