@@ -3,7 +3,7 @@
 from openerp import models, api, fields, _
 from datetime import datetime
 
-class ApiViwer(models.Model):
+class ApiViewer(models.Model):
     _name = 'apihelper.apihelper'
 
     @api.model
@@ -80,12 +80,28 @@ class ApiRucher(models.Model):
     nombre      = fields.Integer('Nombre de Ruche')
     traitement   = fields.One2many('apihelper.apitraitement', 'rucher')
 
+# creation d'un rucher sur les valeurs du self
+    @api.multi
+    def duplicate(self):
+        self.ensure_one()
+
+        vals = { 'name' : self.name + '(duplicate)','terrain' :self.terrain.id, 'nombre' : self.nombre }
+
+        #from model import ApiTraitement
+
+        id_rucher = super(ApiRucher,self).create(vals)
+
     @api.multi
     def new_treatment(self):
         self.ensure_one()
-        vals = { 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'apiculteur'}
-        
-        id_treatment = super('apihelper.apitraitement',self ).create ({ 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now(),'type':'apiculteur'})
+        vals = { 'intitule' : 'Varoa','rucher' :self.id, 'personne' : self.env.user.id, 'date' : datetime.now() }
+        #from model import ApiTraitement
+
+        import pdb
+        pdb.set_trace()
+
+        id_treatment = ApiTraitement.new(vals)
+
         return {'type': 'ir.actions.act_window',
                 'res_model': 'apihelper.apitraitement',
                 'name' : 'Traitementement ajouté',
