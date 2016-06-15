@@ -77,7 +77,7 @@
     />
            <!--Menu  premiere methode recherche en cours -->
     <menuitem name="La premiere"
-              id="api_helper_terrain"
+              id="api_helper_premiere"
               parent="api_helper_view"
               action="load_api_helper_premiere"
     />
