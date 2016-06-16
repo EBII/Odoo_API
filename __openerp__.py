@@ -35,13 +35,19 @@
     'author': 'EBII MonsieurB',
     'contributors': 'Alexis de lattre',  # text
     'website': 'https://www.ebii.fr',
+    # any module necessary for this one to work correctly
+    'depends': ['website'],
+
     'data': [
-             'api_helper_view_rucher.xml',
-             'api_helper_view_ressource.xml',
-             'api_helper_view_terrain.xml',
-             'api_helper_view_traitement.xml',
-             'api_helper_view_floraison.xml',
-             'api_helper_view.xml',
+            'security/ir.model.access.csv',
+            'views/templates.xml',
+            'wizard/apihelper_wizard_view.xml',
+             'views/api_helper_view_rucher.xml',
+             'views/api_helper_view_ressource.xml',
+             'views/api_helper_view_terrain.xml',
+             'views/api_helper_view_traitement.xml',
+             'views/api_helper_view_floraison.xml',
+             'views/api_helper_view.xml',
     ],
 
     'demo': ['demo/apihelper.apiressource.csv',

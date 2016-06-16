@@ -27,6 +27,8 @@
         <field name="model">apihelper.apiterrain</field>
         <field name="arch" type="xml">
             <tree string="Les Terrains">
+                <button name="boolean_setting" string="Désactiver" attrs="{'invisible':[('actif', '=', False)]}" confirm="désactiver le terrain ? " type="object" class="oe_highlight"/>
+                <button name="boolean_setting" string="Activer" attrs="{'invisible':[('actif', '=',True )]}" confirm="activer le terrain ? " type="object" class="oe_highlight"/>
                 <field name="emplacement"/>
                 <field name="proprietaire"/>
                 <field name="apiculteur"/>

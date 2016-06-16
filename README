@@ -31,6 +31,14 @@ it serves to discuss the pratice with the new API
 
 git remote add origin https://github.com/EBII/Odoo_API.git
 
-install with demo data 
+=== install with demo data
 
 -i api_helper --without-demo={'api_helper':False}
+
+=== passer en debug sql
+
+ak run -u api_helper  --log-level debug_sql
+
+=== menu action server
+
+=== action windows avec class transiant renvoi un wizard

@@ -27,6 +27,7 @@
         <field name="arch" type="xml">
             <tree string="Les Ruchers ">
                 <button name="new_treatment" string="traiter Varoa" confirm="Ajouter un traitement anti varoa a ce rucher ? "  type="object" class="oe_highlight"/>
+                <button name="copy_rucher" string="copier" confirm="copier ce rucher ? "  type="object" class="oe_highlight"/>
                 <button name="duplicate" string="dupliquer" confirm="Dupliquer ce rucher ? "  type="object" class="oe_highlight"/>
                 <field name="name"/>
                 <field name="terrain"/>

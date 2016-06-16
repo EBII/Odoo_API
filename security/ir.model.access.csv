@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_api_helper,access_api_helper,model_apihelper_apihelper,,1,0,0,0
+access_api_apiterrain,access_api_apiterrain,model_apihelper_apiterrain,,1,0,0,0
+access_api_apitraitement,access_api_apitraitement,model_apihelper_apitraitement,,1,0,0,0
+access_api_apiressource,access_api_apiressource,model_apihelper_apiressource,,1,0,0,0
+access_api_apifloraison,access_api_apifloraison,model_apihelper_apifloraison,,1,0,0,0
+access_api_apirucher,access_api_apirucher,model_apihelper_apirucher,,1,0,0,0
