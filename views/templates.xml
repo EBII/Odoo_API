@@ -1,0 +1,20 @@
+<openerp>
+    <data>
+         <template id="index">
+
+              <t t-call="website.layout">
+                <t t-set="title">Matrice Web de api_helper</t>
+                <div class="oe_structure">
+                    <div class="container">
+                       <t t-foreach="ruchers" t-as="rucher">
+                            <p><t t-esc="rucher.id"/> <t t-esc="rucher.name"/></p>
+                        </t>
+                    </div>
+                </div>
+            </t>
+
+
+
+        </template>
+</data>
+    </openerp>
