@@ -32,26 +32,26 @@ class WizardApihelper(models.TransientModel):
 
         raise UserError("Voici le wizard qui se lance pas!")
     @api.multi
-    def wz_Browse(self):
+    def wz_GetIt(self):
         for me in self:
             un_id     = me.unId
             un_model  = me.choix_model
             une_value = me.information
             if un_id != 'none':
-               modelId = un_model+'_id'
-               rs = self.env[un_model].browse(un_id)
+                this_Id = int(un_id)
+               # rs = self.env[un_model].browse(un_id)
+               #
+               # return rs
 
-               return rs
-
-                # return {'type': 'ir.actions.act_window',
-                # 'res_model': un_model,
-                # 'name' : 'Read',
-                # 'view_mode': 'form',
-                # 'nodestroy': True,
-                # 'target': 'curent',
-                # 'domain': [(modelId,'=',un_id)],
-                # #'context': {'read': True}
-                # }
+                return {'type': 'ir.actions.act_window',
+                'res_model': un_model,
+                'res_id' : this_Id,
+                'name' : 'Read',
+                'view_mode': 'form',
+                'nodestroy': True,
+                'target': 'curent',
+                #'context': {'read': True}
+                }
 
 
 
