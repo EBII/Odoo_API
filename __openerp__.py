@@ -36,7 +36,6 @@
     'contributors': 'Alexis de lattre',  # text
     'website': 'https://www.ebii.fr',
     # any module necessary for this one to work correctly
-    'depends': ['website'],
 
     'data': [
             'security/ir.model.access.csv',

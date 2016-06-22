@@ -5,15 +5,15 @@ from datetime import datetime
 from openerp.exceptions import Warning as UserError
 
 
-#TODO fournir une page web pour afficher la matrice ()
-class MatriceWeb(http.Controller):
-
-    @http.route('/api_helper/matrice', auth='public', website=True)
-    def index(self, **kw):
-        Ruchers = http.request.env['apihelper.apirucher']
-        return http.request.render('api_helper.index', {
-            'ruchers': Ruchers.search([])
-        })
+# #TODO fournir une page web pour afficher la matrice ()
+# class MatriceWeb(http.Controller):
+#
+#     @http.route('/api_helper/matrice', auth='public', website=True)
+#     def index(self, **kw):
+#         Ruchers = http.request.env['apihelper.apirucher']
+#         return http.request.render('api_helper.index', {
+#             'ruchers': Ruchers.search([])
+#         })
 
 
 class ApiViewer(models.Model):
