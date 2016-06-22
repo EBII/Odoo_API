@@ -13,6 +13,16 @@ class WizardApihelper(models.TransientModel):
     choix_model = fields.Selection([('apihelper.apiressource','Les Ressources'),('apihelper.apiterrain','Les Terrains')
                                    ,('apihelper.apitraitement','Les Traitements'),('apihelper.apifloraison','Les Floraisons')
                                    ,('apihelper.apirucher','Les Ruchers')], "Le modele",  required=True)
+    choix_champs = fields.Selection([],'Un champs')
+
+    @api.onchange('choix_model')
+    def _onchange_models(self):
+        if self.choix_model != False:
+            model = self.choix_model
+            liste_champs =
+            raise UserError(model)
+
+
 
     @api.multi
     def get_wizard(self,*args):
@@ -53,6 +63,28 @@ class WizardApihelper(models.TransientModel):
                 #'context': {'read': True}
                 }
 
+
+    @api.multi
+    def wz_Write(self):
+        for me in self:
+            un_id     = me.unId
+            un_model  = me.choix_model
+            une_value = me.information
+            if un_id != 'none':
+                this_Id = int(un_id)
+               # rs = self.env[un_model].browse(un_id)
+               #
+               # return rs
+
+                return {'type': 'ir.actions.act_window',
+                'res_model': un_model,
+                'res_id' : this_Id,
+                'name' : 'Read',
+                'view_mode': 'form',
+                'nodestroy': True,
+                'target': 'curent',
+                #'context': {'read': True}
+                }
 
 
     @api.multi
