@@ -10,7 +10,7 @@ class WizardApihelper(models.TransientModel):
 
     unId        = fields.Selection([('none','none'),(1,1),(2,2),(3,3),(4,4),(5,5)],'Un id de model', default='none')
     information = fields.Char('texte')
-    choix_model = fields.Selection([('apihelper.ressource','Les Ressources'),('apihelper.apiterrain','Les Terrains')
+    choix_model = fields.Selection([('apihelper.apiressource','Les Ressources'),('apihelper.apiterrain','Les Terrains')
                                    ,('apihelper.apitraitement','Les Traitements'),('apihelper.apifloraison','Les Floraisons')
                                    ,('apihelper.apirucher','Les Ruchers')], "Le modele",  required=True)
 
@@ -38,18 +38,20 @@ class WizardApihelper(models.TransientModel):
             un_model  = me.choix_model
             une_value = me.information
             if un_id != 'none':
-                modelId = un_model+'_id'
-               # rs = self.env[un_model].browse(un_id)
+               modelId = un_model+'_id'
+               rs = self.env[un_model].browse(un_id)
 
-                return {'type': 'ir.actions.act_window',
-                'res_model': un_model,
-                'name' : 'Read',
-                'view_mode': 'form',
-                'nodestroy': True,
-                'target': 'curent',
-                'domain': [(modelId,'=',un_id)],
-                #'context': {'read': True}
-                }
+               return rs
+
+                # return {'type': 'ir.actions.act_window',
+                # 'res_model': un_model,
+                # 'name' : 'Read',
+                # 'view_mode': 'form',
+                # 'nodestroy': True,
+                # 'target': 'curent',
+                # 'domain': [(modelId,'=',un_id)],
+                # #'context': {'read': True}
+                # }
 
 
 
