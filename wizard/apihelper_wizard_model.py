@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, api, fields, _
+
 from openerp.exceptions import Warning as UserError
+
 
 
 class WizardApihelper(models.TransientModel):
@@ -10,17 +12,33 @@ class WizardApihelper(models.TransientModel):
 
     unId        = fields.Selection([('none','none'),(1,1),(2,2),(3,3),(4,4),(5,5)],'Un id de model', default='none')
     information = fields.Char('texte')
-    choix_model = fields.Selection([('apihelper.apiressource','Les Ressources'),('apihelper.apiterrain','Les Terrains')
-                                   ,('apihelper.apitraitement','Les Traitements'),('apihelper.apifloraison','Les Floraisons')
-                                   ,('apihelper.apirucher','Les Ruchers')], "Le modele",  required=True)
-    choix_champs = fields.Selection([],'Un champs')
+    # choix_model = fields.Selection([('apihelper.apiressource','Les Ressources'),('apihelper.apiterrain','Les Terrains')
+    #                                ,('apihelper.apitraitement','Les Traitements'),('apihelper.apifloraison','Les Floraisons')
+    #                                ,('apihelper.apirucher','Les Ruchers')], "Le modele",  required=True)
+    choix_model =fields.Many2one('ir.model','Modeles', domain=[('name','like','apihelper')])
+    choix_champs = fields.Many2one('ir.model.fields','Champs')
+    type =fields.Selection(related= "choix_champs.ttype",readonly=True)
 
     @api.onchange('choix_model')
     def _onchange_models(self):
         if self.choix_model != False:
-            model = self.choix_model
-            liste_champs =
-            raise UserError(model)
+            modelnames = self.choix_model.name
+            list =  models.MAGIC_COLUMNS
+            print tuple(list)
+            return {
+                'domain': {
+                    'choix_champs': [('model', 'like', modelnames ),( 'name' ,'not in', list)]
+                }
+    }
+           # model = self.env[model_unicod]
+           # key = model._fields.keys
+            # values={}
+            # for p in key:
+            #     values[p]=p
+            # self.choix_champs = values
+
+            #return self
+#magic column
 
 
 
@@ -54,12 +72,12 @@ class WizardApihelper(models.TransientModel):
                # return rs
 
                 return {'type': 'ir.actions.act_window',
-                'res_model': un_model,
+                'res_model': un_model.name,
                 'res_id' : this_Id,
                 'name' : 'Read',
                 'view_mode': 'form',
                 'nodestroy': True,
-                'target': 'curent',
+                'target': 'current',
                 #'context': {'read': True}
                 }
 
@@ -93,4 +111,3 @@ class WizardApihelper(models.TransientModel):
             un_model = me.choix_model
             une_value = me.information
             raise UserError("le model : "+str(un_model) +"  le texte : "+une_value )
-
